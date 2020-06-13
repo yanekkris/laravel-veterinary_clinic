@@ -1,3 +1,16 @@
+@mixin container {
+    background-color: rgb(231, 197, 152);
+    margin: 1rem;
+    padding: 2rem 2rem 4rem;
+    border-radius: 10px;
+}
+
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -9,10 +22,9 @@ body {
     text-align: center;
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
+    @include flexCenter();
     flex-direction: column;
-    align-items: center;
+    color: rgb(37, 37, 37);
 }
 
 .title {
@@ -43,11 +55,8 @@ nav a {
 }
 
 .pets_div {
+    @include container();
     width: 27%;
-    background-color: rgb(231, 197, 152);
-    margin-bottom: 4rem;
-    padding: 1rem 2rem;
-    border-radius: 10px;
     box-shadow: rgb(63, 63, 63) 0px 8px 25px;
     .pet_info {
         text-align: left;
@@ -60,9 +69,7 @@ nav a {
     .img {
         height: 300px;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter();
         img {
             max-width: 100%;
             max-height: 100%;
@@ -93,10 +100,7 @@ button {
 
 .edit_pet {
     width: 40%;
-    background-color: rgb(231, 197, 152);
-    margin: 5rem;
-    padding: 2rem 2rem 4rem;
-    border-radius: 10px;
+    @include container();
     box-shadow: rgb(63, 63, 63) 0px 8px 25px;
     h1 {
         color: indianred;
@@ -136,10 +140,7 @@ li {
 
 .owner_div {
     width: 400px;
-    background-color: rgb(231, 197, 152);
-    margin: 5rem;
-    padding: 2rem 2rem 4rem;
-    border-radius: 10px;
+    @include container();
     box-shadow: rgb(63, 63, 63) 0px 8px 25px;
     h1 {
         color: indianred;
@@ -148,10 +149,7 @@ li {
 .owners_div {
     width: 22%;
     height: 200px;
-    background-color: rgb(231, 197, 152);
-    margin: 1rem;
-    padding: 2rem 2rem 4rem;
-    border-radius: 10px;
+    @include container();
 }
 .container_owners {
     display: flex;
@@ -166,11 +164,7 @@ li {
 
 .doctor_div {
     width: 300px;
-
-    background-color: rgb(231, 197, 152);
-    margin: 1rem;
-    padding: 2rem 2rem 4rem;
-    border-radius: 10px;
+    @include container();
     h2 {
         font-size: 1.8rem;
         color: rgb(136, 71, 28);
@@ -180,7 +174,55 @@ li {
     }
 }
 
+.container_visits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3rem;
+    .visits_title {
+        width: 100%;
+        h2 {
+            border-bottom: solid 2px rgb(238, 163, 65);
+            width: fit-content;
+            margin: 2rem auto;
+        }
+    }
+    .visit_div {
+        @include container();
+        width: auto;
+    }
+    .add {
+        @include flexCenter();
+        width: 3rem;
+        height: 3rem;
+        padding: 0.5rem;
+        background-color: rgb(136, 71, 28);
+        a {
+            color: white;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.container_add {
+    @include container();
+}
+
 button:hover,
 .button:hover {
     background-color: rgb(238, 163, 65);
+}
+
+textarea {
+    border: none;
+    border-radius: 10px;
+    height: 150px;
+    width: 200px;
+    margin-top: 0.5rem;
+}
+
+textarea:focused,
+input:focused  {
+    border: none;
 }
