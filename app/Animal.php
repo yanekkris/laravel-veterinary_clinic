@@ -10,4 +10,9 @@ class Animal extends Model
     {
         return $this->belongsTo('App\Owner');
     }
+
+    public function visit()
+    {
+        return $this->hasMany('App\Visit');
+    }
 }

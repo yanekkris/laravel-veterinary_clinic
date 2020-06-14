@@ -10,4 +10,9 @@ class Owner extends Model
     {
         return $this->hasMany('App\Animals');
     }
+
+    public function visit()
+    {
+        return $this->hasMany('App\Visit');
+    }
 }

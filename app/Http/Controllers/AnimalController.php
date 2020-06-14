@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Animal;
 use App\Owner;
+use App\Visit;
 class AnimalController extends Controller
 {   
     public function index()
@@ -19,9 +20,11 @@ class AnimalController extends Controller
     {
         $animal = Animal::findOrFail($animal_id);
 
+        $visits = Visit::where('animal_id', $animal_id)->take(1)->get();
+
         // $owner = Book::where('publisher_id', $publisher_id)->get();
 
-        return view('animals.show', compact('animal'));
+        return view('animals.show', compact('animal', 'visits'));
         
     }
 
@@ -94,5 +97,13 @@ class AnimalController extends Controller
         session()->flash('success_message', 'The comment was successfully saved!');
 
         return redirect()->route('animals.edit', [$animal->id]);
+    }
+
+    public function search(Request $request)
+    {
+        $animals = Animal::where('name', $request->input('search') || 'id', (Integer)$request->input('search') )->get();
+       
+
+        return view('animals.search', compact('animals'));
     }
 }

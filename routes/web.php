@@ -34,7 +34,7 @@ Route::put('/owners/{owner_id}',     'OwnerController@update')->name('owners.upd
 //Animal routes
 
 Route::get('/animals', 'AnimalController@index')->name('animals.index');
-Route::get('/animals/search', 'AnimalController@search')->name('animals.search');
+Route::put('/animals/search', 'AnimalController@search')->name('animals.search');
 
 Route::get('/animals/{animal_id}', 'AnimalController@show')->where('animal_id', '[0-9]+');
 
@@ -43,5 +43,13 @@ Route::post('/animals',               'AnimalController@store')->name('animals.s
 Route::get('/animals/{animal_id}/edit', 'AnimalController@edit')->name('animals.edit');
 Route::put('/animals/{animal_id}',     'AnimalController@update')->name('animals.update');
 
+//Doctor routes
 
 Route::get('/doctors', 'DoctorController@index')->name('doctors.index');
+
+//Visits routes
+
+Route::get('/visits', 'VisitController@index')->name('visits.index');
+Route::get('/visits/{animal_id}', 'VisitController@show')->name('visits.show')->where('animal_id', '[0-9]+');
+Route::get('/visits/{animal_id}/new', 'VisitController@new')->name('visits.new')->where('animal_id', '[0-9]+');
+Route::post('/visits/create', 'VisitController@create')->name('visits.create');

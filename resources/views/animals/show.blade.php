@@ -13,8 +13,9 @@
         <div class="img"><img src="/images/{{ $animal->photo}}" alt="Dogo"></div>
 
         <h3>Owner: <a href="/owners/{{$animal->owner->id}}"> {{$animal->owner->first_name." ".$animal->owner->surname}} </a></h3>
-
+        <h4>Last visit: <a href="/visits/{{$visits[0]}}"> {{$visits[0]->created_at}} </a></h4>
         <a href="/animals/{{ $animal->id }}/edit"><button>Edit</button></a>
+    <a href="/visits/{{$animal->id}}"><button>Visits</button></a>
     </div>  
 </div>
 
